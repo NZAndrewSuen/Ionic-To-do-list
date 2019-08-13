@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{currentList?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray">
+
+  <!--list specific info part-->
+  <!-- <ion-card>
+    <ion-list>
+      <ion-card-header>{{currentList?.name}}</ion-card-header>
+      <ion-card-content>{{currentList?.name}}</ion-card-content>
+    </ion-list>
+  </ion-card> -->
+
+  <!-- new version -->
+  <ion-item>
+    <ion-icon name="list-box" slot="start"></ion-icon>
+    <ion-label>{{currentList?.name}}
+      <p class="tags">Tags: {{currentList?.attribution}}</p>
+    </ion-label>
+  </ion-item>
+  <!-- end new version -->
+
+  <!--Show task-->
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Your Tasks</ion-label>
+      </ion-list-header>
+
+      <!-- new version -->
+      <ion-item (click)="passId('-1')" class="green">
+        <ion-icon name="add" slot="start"></ion-icon>
+        <ion-label>Create a Task</ion-label>
+      </ion-item>
+      <!-- end new version -->
+      
+      <ion-item (click)="passId(ta.id)" tappable *ngFor="let ta of task">
+        <!-- old version -->
+        <!-- <p>{{ta.taskName}}</p>
+        <p>Date <strong>{{ta.taskDate}}</strong></p> -->
+        <!-- end old version -->
+
+        <!-- new version -->
+        <ion-icon name="checkbox-outline" *ngIf="ta.isCompleted" slot="start"></ion-icon>
+        <ion-icon name="square-outline" *ngIf="!ta.isCompleted" slot="start"></ion-icon>
+        <ion-label [class.task-completed]="ta.isCompleted">
+          {{ta.taskName}}
+          <p class="tags">{{ta.taskDate | date:'dd/MM/yyyy HH:mm'}}</p>
+        </ion-label>
+        <!-- end new version -->
+      </ion-item>
+      
+    </ion-list>
+  </ion-card>
+
+  <!-- <ion-button expand="block" (click)="passId()" class="green">
+    + Create a task
+  </ion-button> -->
+
+  <!--Archive lists-->
+  <ion-button expand="block" (click)="warnArchive()" class="archive" fill="outline" style="width: 90%; margin: 0 auto;">
+    Archive
+  </ion-button>
+
+  <!--Delete lists-->
+  <ion-button expand="block" (click)="warnDelete()" class="delete" fill="outline" style="width: 90%; margin: 20px auto;">
+    Delete
+  </ion-button>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="green">
+    <ion-fab-button (click)="passId('-1')">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>

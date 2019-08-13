@@ -1,0 +1,7 @@
+{
+  "appId": "com.tobias.eventManager",
+  "appName": "event-manager",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

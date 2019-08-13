@@ -1,0 +1,199 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+// global css
+
+.center {
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+ion-content.gray {
+    --background: #eee;
+}
+
+.placeholder-gray {
+    color: #999;
+}
+
+.welcome-page {
+    background-color:#115737;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+
+    .welcome-inner {
+        height: 100%;
+        padding: 20px;
+        background-color: #EEEEEE;
+
+        .welcome-title {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .welcome-subtitle {
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+            color: #808080;
+
+            a {
+                color: #115737;
+                text-decoration: none;
+            }
+        }
+
+        .welcome-text {
+            margin-top: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .welcome-form {
+            margin-top: 10px;
+
+            .invalid {
+                border-bottom: 1px solid #ff6153;
+            }
+            
+            .error-message {
+                min-height: 2.2rem;
+
+                ion-label {
+                    margin: 2px 0;
+                    font-size: 60%;
+                    color: #ff6153;
+                }
+            }
+        }
+    }
+}
+
+ion-toolbar.green {
+    --background: #115737;
+    color: white;
+
+    ion-back-button {
+        --color: white;
+    }
+
+    ion-icon {
+        color: white;
+    }
+}
+
+ion-button.green {
+    margin-top: 20px;
+    --background: #115737;
+    text-transform: uppercase;
+}
+
+ion-button.blue {
+    margin-top: 20px;
+    --color: Secondary;
+    color: white;
+    text-transform: uppercase;
+}
+
+ion-button.create {
+    margin-top: 20px;
+    --color: #115737;
+    --background: none;
+    --border-color: #115737;
+    text-transform: uppercase;
+}
+
+ion-button.archive {
+    margin-top: 20px;
+    --color: #999;
+    --background: none;
+    --border-color: #999;
+    text-transform: uppercase;
+}
+
+ion-button.delete {
+    margin-top: 20px;
+    --color: red;
+    --background: none;
+    --border-color: red;
+    text-transform: uppercase;
+}
+
+ion-back-button.green {
+    --color: #115737;
+}
+
+ion-avatar.medium {
+    width: 100px;
+    height: 100px;
+}
+
+.task-completed {
+    text-decoration: line-through;
+    color: #999 !important;
+}
+
+ion-item.green {
+    --color: #115737;
+}
+
+ion-item.gray {
+    --color: #999;
+}
+
+p.tags {
+    color: #999;
+}
+
+ion-fab.green {
+    ion-fab-button {
+        --background: #115737; 
+    }
+}
+
+a.blue {
+    color: #3880ff !important;
+}
+
+ion-button.login-facebook {
+    margin-top: 15px;
+    text-transform: uppercase;
+}

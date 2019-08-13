@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/hpage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create a List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray" padding>
+  <ion-item>
+    <ion-label position="stacked">List name</ion-label>
+    <ion-input [(ngModel)]="listName" type="text" placeholder="Enter new list name">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Tags</ion-label>
+    <ion-input [(ngModel)]="listAttribution" type="text" placeholder="work, study, exercise">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="createList(listName, listAttribution)" class="green">
+    Create
+  </ion-button>
+
+</ion-content>

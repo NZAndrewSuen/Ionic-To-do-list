@@ -1,0 +1,60 @@
+<ion-content>
+  <div class="welcome-page">
+    <div class="welcome-inner">
+      <div class="welcome-title">
+        Login to My to-do
+      </div>
+      <div class="welcome-subtitle">
+        Use your existing account to login
+      </div>
+      <div class="welcome-form">
+
+        <!-- start of login normally -->
+        <form [formGroup]="loginForm">
+          <ion-item>
+            <ion-input formControlName="email" type="email" placeholder="Email address" [class.invalid]="!loginForm.controls['email'].valid &&
+              loginForm.controls['email'].touched">
+            </ion-input>
+          </ion-item>
+          <ion-item class="error-message" *ngIf="!loginForm.controls['email'].valid &&
+               loginForm.controls['email'].touched">
+            <ion-label>Please enter a valid email address.</ion-label>
+          </ion-item>
+
+          <!-- start of input password supporting show/hide password -->
+          <ion-item>
+            <ion-input formControlName="password" [type]="getType()" placeholder="Password"
+              [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched">
+            </ion-input>
+            <ion-button *ngIf="!isActiveToggleTextPassword" (click)="toggleTextPassword()" slot="end">HIDE</ion-button>
+            <ion-button *ngIf="isActiveToggleTextPassword" (click)="toggleTextPassword()" slot="end">SHOW</ion-button>
+          </ion-item>
+          <!-- end of input password supporting show/hide password -->
+
+          <ion-item class="error-message" *ngIf="!loginForm.controls['password'].valid
+              && loginForm.controls['password'].touched">
+            <ion-label>Your password needs more than 6 characters.</ion-label>
+          </ion-item>
+          <ion-button (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid" class="green">
+            Login
+          </ion-button>
+        </form>
+        <!-- end of login normally -->
+        
+        <!-- start of other options -->
+        <ion-button expand="block" (click)="loginFacebook()" class="login-facebook">
+          Login Facebook
+          <ion-icon name="logo-facebook" slot="end"></ion-icon>
+        </ion-button>
+        <div class="welcome-subtitle">
+          No account? <a href="/signup">Create one!</a>
+        </div>
+        <div class="welcome-subtitle">
+          <a href="/reset-password" class="blue">Forgot your password?</a>
+        </div>
+        <!-- end of other options -->
+
+      </div>
+    </div>
+  </div>
+</ion-content>

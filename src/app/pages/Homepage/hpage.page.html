@@ -1,0 +1,91 @@
+<!-- header -->
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/setting">
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Welcome, {{userName}}</ion-title>
+  </ion-toolbar>
+
+  <!-- <ion-toolbar>
+    <ion-input type="text" [(ngModel)]="keyword"></ion-input>
+    <ion-button slot="end" (click)="search(keyword)">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content class="gray">
+  <ion-card>
+    <form [formGroup]="searchForm">
+      <ion-item>
+        <ion-input formControlName="keyword" type="text" [(ngModel)]="keyword" placeholder="Search your lists..."></ion-input>
+        <ion-button slot="end" (click)="search(keyword)" [disabled]="!searchForm.valid" style="margin: 0;">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!searchForm.controls['keyword'].valid && searchForm.controls['keyword'].touched">
+        <ion-label>Your keyword needs more than 1 characters.</ion-label>
+      </ion-item>
+    </form>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Your Lists</ion-label>
+      </ion-list-header>
+      <!-- new version -->
+      <ion-item routerLink="/list-create" class="green">
+        <ion-icon name="add" slot="start"></ion-icon>
+        <ion-label>Create a List</ion-label>
+      </ion-item>
+      <!-- end new version -->
+      <ion-item tappable *ngFor="let li of list" routerLink="/list-detail/{{ li.id }}">
+        <!-- old version -->
+        <!-- <ion-label>
+          <h2>{{li?.name}}</h2>
+          <p>Class: <strong>${{li?.attribution}}</strong></p>
+        </ion-label> -->
+        <!-- end old version -->
+
+        <!-- new version -->
+        <ion-icon name="list-box" slot="start" ></ion-icon>
+        <ion-label>{{li?.name}}
+          <p class="tags">Tags: {{li?.attribution}}</p>
+        </ion-label>
+        <!-- end new version -->
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <!-- new version -->
+    <ion-item routerLink="/archive" class="gray">
+      <ion-icon name="archive" slot="start"></ion-icon>
+      <ion-label>View Archived</ion-label>
+    </ion-item>
+    <!-- end new version -->
+  </ion-card>
+
+  <!-- old version -->
+  <!-- <ion-button expand="block" routerLink="/list-create" class="green">
+    Create a List
+  </ion-button> -->
+  <!-- end old version -->
+
+  <!-- old version -->
+  <!-- <ion-button expand="block" routerLink="/archive" class="green">
+    archive
+  </ion-button> -->
+  <!-- end old version -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="green">
+    <ion-fab-button routerLink="/list-create">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

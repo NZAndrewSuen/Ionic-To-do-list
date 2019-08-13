@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/hpage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Archived</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray">
+  <ion-card>
+    <ion-list *ngFor="let list of newlist">
+
+      <ion-item *ngIf="list.isArchive === true" routerLink="/list-detail/{{ list.id }}">
+
+        <!-- old version -->
+        <!-- <ion-label>
+          <h2>{{list?.name}}</h2>
+          <p>Attribution: <strong>{{list?.attribution}}</strong></p>
+        </ion-label> -->
+        <!-- end old version -->
+
+        <!-- new version -->
+        <ion-icon name="list-box" slot="start" ></ion-icon>
+        <ion-label>{{list?.name}}
+          <p class="tags">Tags: {{list?.attribution}}</p>
+        </ion-label>
+        <!-- end new version -->
+
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

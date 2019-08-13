@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/hpage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray">
+
+  <!-- start of search form -->
+  <ion-card>
+    <form [formGroup]="searchForm">
+      <ion-item>
+        <ion-input formControlName="keyword" type="text" [(ngModel)]="keyword"></ion-input>
+        <ion-button slot="end" (click)="search(searchForm)" [disabled]="!searchForm.valid" style="margin: 0;">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item class="error-message"
+        *ngIf="!searchForm.controls['keyword'].valid && searchForm.controls['keyword'].touched">
+        <ion-label>Your keyword needs more than 1 characters.</ion-label>
+      </ion-item>
+    </form>
+  </ion-card>
+  <!-- end of search form -->
+
+  <!-- start of list result -->
+  <ion-card>
+    <ion-list-header>
+      <ion-label>Your Lists</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let list of lists" routerLink="/list-detail/{{list?.id}}">
+      <ion-icon name="list-box" slot="start"></ion-icon>
+      <ion-label>{{list?.name}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="lists.length == 0">
+      <ion-label>No result found.</ion-label>
+    </ion-item>
+  </ion-card>
+  <div class="search-result-title" *ngIf="lists.length > 0">
+    {{lists.length}} result(s) found.
+  </div>
+  <!-- end of list result -->
+
+  <!-- <div class="search-result-title">
+    Tasks
+  </div>
+  <ion-card>
+    <ion-item>
+      <ion-icon name="square-outline" slot="start"></ion-icon>
+      <ion-label>Task 1</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="square-outline" slot="start"></ion-icon>
+      <ion-label>Task 2</ion-label>
+    </ion-item>
+    <ion-item class="task-completed">
+        <ion-icon name="square-outline" slot="start"></ion-icon>
+        <ion-label>Task 2</ion-label>
+      </ion-item>
+  </ion-card> -->
+</ion-content>

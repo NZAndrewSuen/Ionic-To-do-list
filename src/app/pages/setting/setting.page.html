@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/hpage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray">
+
+  <!-- start of user info -->
+  <div class="user-avatar">
+    <div class="user-avatar-circle" *ngIf="userProfile?.firstLetter">
+      {{userProfile?.firstLetter}}
+    </div>
+    <div class="user-avatar-text" *ngIf="userProfile?.firstName">Hi, {{userProfile?.firstName}}</div>
+  </div>
+  <!-- end of user info -->
+
+  <!-- start of setting section 1 -->
+  <ion-card>
+    <ion-item routerLink="/profile">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-item>
+    <ion-item (click)="underDevelopment()">
+      <ion-icon name="notifications" slot="start"></ion-icon>
+      <ion-label>Notification</ion-label>
+    </ion-item>
+    <ion-item (click)="logOut()">
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      <ion-label>Signout</ion-label>
+    </ion-item>
+  </ion-card>
+  <!-- end of setting section 1 -->
+
+  <!-- start of setting section 2 -->
+  <ion-card>
+    <ion-item routerLink="/about">
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-item>
+    <!-- <ion-item (click)="underDevelopment()">
+      <ion-icon name="trash" slot="start"></ion-icon>
+      <ion-label>Clear cache</ion-label>
+    </ion-item> -->
+  </ion-card>
+  <!-- end of setting section 2 -->
+  
+</ion-content>

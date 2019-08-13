@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="green">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- taskId == '-1' means create task, while taskId != '-1' means edit task  -->
+    <ion-title *ngIf="taskId == '-1'">Create a Task</ion-title>
+    <ion-title *ngIf="taskId != '-1'">{{taskName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="gray">
+  <ion-card>
+    <ion-item>
+      <ion-label position="stacked">Task name</ion-label>
+      <ion-input [(ngModel)]="taskName" type="text" placeholder="Please enter your task">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Task date</ion-label>
+      <ion-datetime [(ngModel)]="taskDate" displayFormate="MMM D, YYYY" pickerFormat="D MMM YYYY HH mm">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Note</ion-label>
+      <ion-textarea [(ngModel)]="taskNote" rows="8" cols="20" placeholder="Enter more information here"></ion-textarea>
+    </ion-item>
+
+    <!-- show Is completed only in case of edit task -->
+    <ion-item *ngIf="taskId != '-1'">
+      <ion-label position="stacked">Is completed</ion-label>
+      <ion-checkbox [(ngModel)]="isCompleted"></ion-checkbox>
+    </ion-item>
+
+    <ion-button expand="block" (click)="submit()" class="green">
+      Ok
+    </ion-button>
+
+    <!-- show button Delete only in case of edit task -->
+    <ion-button *ngIf="taskId != '-1'" expand="block" (click)="delete()" class="delete" fill="outline">
+      Delete
+    </ion-button>
+  </ion-card>
+</ion-content>

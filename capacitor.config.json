@@ -1,0 +1,7 @@
+{
+  "appId": "com.tobias.my-to-do",
+  "appName": "my-to-do",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
